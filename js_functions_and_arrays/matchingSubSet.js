@@ -1,16 +1,13 @@
-function mergeSet(array1, array2) {
-    arrayReturn = array1.concat(array2);
-    for (let i = 0; i < arrayReturn.length; i++) {
-        for (let j = i + 1; j < arrayReturn.length; j++) {
-            if (arrayReturn[i] === arrayReturn[j]) {
-                arrayReturn.splice(j, 1);
+function matchingSubSet(arrA, arrB) {
+    let arrayAll = arrA.concat(arrB);
+    let arrReturn = [];
+    for (let i = 0; i < arrayAll.length; i++) {
+        for (let j = i + 1; j < arrayAll.length; j++) {
+            if (arrayAll[i] === arrayAll[j] && (!arrReturn.includes(arrayAll[j]))) {
+                arrReturn.push(arrayAll[j]);
             }
         }
     }
-    return arrayReturn;
+    return arrReturn;
 }
-let array1 = [1, 2, 3];
-
-let array2 = [3, 4, 5];
-
-console.log(mergeSet(array1, array2));
+console.log(matchingSet([1, 2, 3, 4], [3, 4, 5, 6, 7])) // [3, 4]
