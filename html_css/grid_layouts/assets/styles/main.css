@@ -1,0 +1,54 @@
+@import url(reset.css);
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:1rem;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+li:nth-child(1){
+    grid-area: 1/2/2/3;
+}
+
+li:nth-child(2){
+    grid-area: 1/4/2/5;
+}
+
+li:nth-child(3){
+    grid-area: 2/2/4/3;
+}
+
+li:nth-child(4){
+    grid-area: 2/3/3/4;
+}
+
+li:nth-child(5){
+    grid-area: 3/3/4/4;
+}
+
+li:nth-child(6){
+    grid-area: 4/1/5/2;
+}
+
+li:nth-child(7){
+    grid-area: 4/4/5/5;
+}
+
+li:nth-child(8){
+    grid-area: 5/2/6/4;
+}
