@@ -1,0 +1,88 @@
+body {
+    height: 100%;
+    background: #f5f3f0;
+}
+
+section {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 2em;
+    color: #3d3f40;
+}
+
+h3 {
+    font-size: 2em;
+    color: #9a9d9c;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: 'Single Day', cursive;
+}
+
+hr {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.hero-image {
+    width: 2em;
+    margin: 0 auto;
+}
+
+div {
+    margin-bottom: 2em;
+    font-family: 'Orbitron', cursive;
+}
+
+.childDiv {
+    width: 49%;
+    display: inline-block;
+}
+
+label {
+    border: 2px solid;
+    padding: 4px;
+    white-space: nowrap;
+    font-weight: normal;
+    font-family: 'Orbitron', cursive;
+}
+
+.verticalDividingLine {
+    width: 1%;
+    border: 1px;
+    color: #000000;
+    display: inline-block;
+}
+
+p {
+    /* margin: 2rem 0; */
+    text-align: center;
+    font-family: 'Orbitron', cursive;
+}
+
+.leftP {
+    text-align: left;
+}
+
+.rightP {
+    text-align: right;
+}
+
+td {
+    padding: 15px;
+    width: 50%;
+}
+
+.leftTd {
+    border-left: 1px solid #3d3f40;
+}
