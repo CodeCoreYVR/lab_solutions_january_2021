@@ -19,3 +19,12 @@ SELECT SUM(quantity * price)/
 FROM  orders
 INNER JOIN line_items
 ON order_id=orders.id;
+
+
+-- Stretch
+
+SELECT SUM(quantity * price)/
+ COUNT(DISTINCT(orders.id))
+FROM  orders
+INNER JOIN line_items
+ON order_id=orders.id;
