@@ -1,0 +1,18 @@
+<%- include('./partials/header.ejs') %> 
+    <h1>Car Status</h1>
+    <% if(type) {%>
+        <h3><%= type %> </h3> 
+    <% } %> 
+    <form action="/car_status">
+        <% let arr = [] %> 
+        <% for(let i=1950; i<=2025; i++){ arr.push(i)} %> 
+        <!-- <select name="year">
+            <%# arr.forEach(e => { %>
+                <option value="<%# e %>"><%# e %></option>
+            <%# }) %> 
+        </select> -->
+        <label for="year">Enter the year</label>
+        <input type="text" name="year" >
+        <input type="submit" value="Submit">
+    </form>
+<%- include('./partials/footer.ejs') %> 
