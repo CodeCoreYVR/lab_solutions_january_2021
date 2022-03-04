@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Product.destroy_all
+
+
+40.times do 
+    created_at = Faker::Date.backward(days: 365 * 2)
+    Product.create(
+        title: Faker::Company.name,
+        description: Faker::Company.industry,
+        price: rand(1000),
+        created_at: created_at,
+        updated_at: created_at
+    )
+end
