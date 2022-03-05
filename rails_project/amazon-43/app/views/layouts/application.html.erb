@@ -18,6 +18,15 @@
     <a href="/contact">Contact</a>
     |
     <a href="/new_bill">New Bill</a>
+    |
+    <%= link_to "Products", products_path %>
+    |
+    <%= link_to "New Product", new_product_path %>
+    
+    <% flash.each do |type, message| %>
+      <%= type + "-------" + message %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
