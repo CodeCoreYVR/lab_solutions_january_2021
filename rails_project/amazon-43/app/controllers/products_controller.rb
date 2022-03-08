@@ -22,7 +22,8 @@ class ProductsController < ApplicationController
     end
 
     def show
-        
+        @reviews = @product.reviews
+        @review = Review.new
     end
 
     def destroy

@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   get("/new_bill",{to:"bill#new_bill"})
   get("/bill", {to: 'bill#result', as: :bill})
 
-  get("/products",to:"products#index")
-  get("/products/new",to:"products#new",as: :new_product)
-  post("/products",to:"products#create")
+  # get("/products",to:"products#index")
+  # get("/products/new",to:"products#new",as: :new_product)
+  # post("/products",to:"products#create")
 
-  get("/products/:id",to:"products#show",as: :product)
-  delete("/products/:id",to:"products#destroy")
+  # get("/products/:id",to:"products#show",as: :product)
+  # delete("/products/:id",to:"products#destroy")
 
-  get("/products/:id/edit",to:"products#edit",as: :edit_product)
-  patch("/products/:id",to:"products#update")
+  # get("/products/:id/edit",to:"products#edit",as: :edit_product)
+  # patch("/products/:id",to:"products#update")
+
+  resources :products do
+    resources :reviews, only: [:create, :destroy]
+  end
 end
