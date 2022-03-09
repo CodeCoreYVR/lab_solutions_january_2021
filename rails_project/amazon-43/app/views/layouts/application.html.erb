@@ -26,7 +26,13 @@
     <% flash.each do |type, message| %>
       <%= type + "-------" + message %>
     <% end %>
-
+    <% if user_signed_in? %>
+      Hello <%= current_user.full_name %>
+      <%= link_to "log out", session_path, method: :delete, data:{confirm:"are you sure you want to log out?"} %>
+      <% else %>
+      <%= link_to "log in", new_session_path %>|
+      <%= link_to "sign up", new_user_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get('/',{to: "welcome#home", as: :home})
+  get('/',{to: "welcome#home", as: :root})
   get('/about',{to: "welcome#about"})
   get('/contact',{to: "welcome#contact"})
   post("/contact_submit",{to:"welcome#thankyou",as: :contact_submit})
@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only: [:create, :destroy]
   end
+  resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create]
 end

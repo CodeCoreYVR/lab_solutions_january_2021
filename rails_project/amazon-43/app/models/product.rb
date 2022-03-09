@@ -4,6 +4,7 @@ class Product < ApplicationRecord
     scope :search, ->(search_query) { where("title ILIKE '%#{search_query}%' or description ILIKE '%#{search_query}%' ") }
     
     has_many :reviews, dependent: :destroy
+    belongs_to :user
 
     validates :title, presence: true, uniqueness: { case_sensitive: false }
     validates :price, numericality:{greater_than: 0}
