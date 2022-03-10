@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post("/contact_submit",{to:"welcome#thankyou",as: :contact_submit})
   get("/new_bill",{to:"bill#new_bill"})
   get("/bill", {to: 'bill#result', as: :bill})
-
+  get("/admin/panel", {to: 'welcome#admin'})
   # get("/products",to:"products#index")
   # get("/products/new",to:"products#new",as: :new_product)
   # post("/products",to:"products#create")

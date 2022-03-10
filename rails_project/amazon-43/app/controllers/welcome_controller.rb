@@ -12,4 +12,14 @@ class WelcomeController < ApplicationController
         @full_name = params[:full_name]
         render :thankyou, status: 201
     end
+    def admin
+        if current_user&.is_admin
+            @products = Product.all.count
+            @reviews = Review.all.count
+            @users = User.all.count
+        else
+            redirect_to root_path, alert: "Not Authorized!"
+        end
+
+    end
 end

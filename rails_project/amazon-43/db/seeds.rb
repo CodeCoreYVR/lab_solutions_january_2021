@@ -7,7 +7,8 @@ super_user = User.create(
     first_name: "Admin",
     last_name: "User",
     email: "admin@user.com",
-    password: PASSWORD
+    password: PASSWORD,
+    is_admin: true
 )
 
 5.times do

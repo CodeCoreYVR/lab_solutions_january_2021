@@ -16,12 +16,15 @@ class ReviewsController < ApplicationController
     def destroy
         @product = Product.find params[:product_id]
         @review = Review.find params[:id]
-        if @review.destroy
-            flash[:success] = "Deleted"
-            redirect_to product_path(@product)
+        if can?(:crud, @review)
+            if @review.destroy
+                flash[:success] = "Deleted"
+                redirect_to product_path(@product)
+            else
+                redirect_to root_path, alert: "can't delete"
+            end
         else
-            redirect_to root_path
+            redirect_to root_path, alert: "Not Authorized!"
         end
-
     end
 end
