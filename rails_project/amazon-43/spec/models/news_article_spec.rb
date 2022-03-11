@@ -9,8 +9,8 @@ RSpec.describe NewsArticle, type: :model do
         expect(na.errors.messages).to(have_key(:title)) 
       end
       it "title should be unique" do
-        persisted_na = NewsArticle.create(title: "AAA", description:"A")
-        na = NewsArticle.new(title: persisted_na.title)
+        persisted_na = FactoryBot.create(:news_article, title: "AAA", description:"A")
+        na = FactoryBot.build(:news_article, title: persisted_na.title)
         na.valid?
         expect(na.errors.messages).to(have_key(:title)) 
       end
@@ -18,7 +18,7 @@ RSpec.describe NewsArticle, type: :model do
     end
     describe "description" do
       it "should have description" do
-        na = NewsArticle.new(description:nil)
+        na = FactoryBot.build(:news_article, description:nil)
         na.valid?
         expect(na.errors.messages).to(have_key(:description)) 
       end
@@ -27,7 +27,7 @@ RSpec.describe NewsArticle, type: :model do
 
     describe "published_at" do
       it "published at should later than created at" do
-        na = NewsArticle.create(created_at:Time.now, published_at: Time.now - 100)
+        na = FactoryBot.build(:news_article, created_at:Time.now, published_at: Time.now - 100)
         na.valid?
         expect(na.errors.messages).to(have_key(:published_at)) 
       end
@@ -36,8 +36,7 @@ RSpec.describe NewsArticle, type: :model do
 
     describe "titleized" do
       it "should save with a title in titlecase" do
-        na = NewsArticle.new(title:"this is a title",description: "aa")
-        na.save
+        na = FactoryBot.create(:news_article, title:"this is a title")
         expect(na.title).to(eq "This Is A Title")
       end
 
@@ -46,7 +45,7 @@ RSpec.describe NewsArticle, type: :model do
 
     describe "publish" do
       it "should use current date as published_at when calling publish method" do
-        na = NewsArticle.new(title:"something",description:"description")
+        na = FactoryBot.build(:news_article, title:"something",description:"description")
 
         na.set_publish_time
 
