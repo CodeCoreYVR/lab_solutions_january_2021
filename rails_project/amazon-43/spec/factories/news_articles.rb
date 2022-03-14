@@ -4,5 +4,6 @@ FactoryBot.define do
     description { Faker::Food.description }
     view_count { rand(1..10000) }
     published_at { Faker::Date.forward(days: 10) }
+    association(:user, factory: :user)
   end
 end
