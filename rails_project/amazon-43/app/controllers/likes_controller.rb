@@ -1,6 +1,5 @@
 class LikesController < ApplicationController
     def create
-        product = Product.find(params[:product_id])
         review = Review.find(params[:review_id])
         like = Like.new(user:current_user, review: review)
         if like.save
@@ -8,7 +7,7 @@ class LikesController < ApplicationController
         else
             flash[:alert] = like.errors.full_messages.join(', ')
         end
-        redirect_to product_path(product)
+        redirect_to product_path(review.product)
     end
 
     def destroy

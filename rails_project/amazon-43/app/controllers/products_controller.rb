@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
     def show
         @reviews = @product.reviews
         @review = Review.new
+        @favourite = Favourite.find_by(product_id: @product, user_id: current_user)
     end
 
     def destroy

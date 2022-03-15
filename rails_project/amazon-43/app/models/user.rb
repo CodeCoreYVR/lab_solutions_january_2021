@@ -12,6 +12,9 @@ class User < ApplicationRecord
     has_many :likes, dependent: :destroy
     has_many :liked_reviews, through: :likes, source: :review
 
+    has_many :favourites
+    has_many :favourited_products, through: :favourites, source: :product
+
     validates :first_name, :last_name, :email, :password, presence: true
 
     def full_name

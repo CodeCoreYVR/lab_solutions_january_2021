@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :reviews, shallow: true, only: [:create, :destroy] do
       resources :likes, shallow: true, only: [:create, :destroy]
     end
+    resources :favourites, shallow: true, only: [:create, :destroy]
   end
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]

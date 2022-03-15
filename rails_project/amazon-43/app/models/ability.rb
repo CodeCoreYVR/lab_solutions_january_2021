@@ -51,7 +51,14 @@ class Ability
     can :destroy, Like do |like|
       like.user == user
     end
-    
+
+    can :favourite, Product do |product|
+      user.persisted? && user != product.user
+    end
+
+    can :destroy, Favourite do |favourite|
+      favourite.user == user
+    end
   end
 
 end

@@ -6,6 +6,9 @@ class Product < ApplicationRecord
     has_many :reviews, dependent: :destroy
     belongs_to :user
 
+    has_many :favourites, dependent: :destroy
+    has_many :favouriters, through: :favourites, source: :user
+
     validates :title, presence: true, uniqueness: { case_sensitive: false }
     validates :price, numericality:{greater_than: 0}
     validates :description, presence: true, length: { minimum: 10 }
