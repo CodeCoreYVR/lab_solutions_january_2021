@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
             # alert, notice 
             # flash["notice"] = "Created!"
             # flash.notice = "Created!"
+            ProductMailer.new_product(@product).deliver_now
             redirect_to product_path(@product.id), notice: "Created"
         else
             render :new
