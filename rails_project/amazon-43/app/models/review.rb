@@ -5,4 +5,7 @@ class Review < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
+
+  has_many :votes, dependent: :destroy
+  has_many :voters, through: :votes, source: :user
 end

@@ -44,6 +44,28 @@ Reviews
             </small>
             <small> Reviewed by <%= review.user.full_name%>
             </small>
+            |
+            <% vote = review.votes.find_by(user: current_user) %>
+            <% if vote%>
+                <%= link_to vote.is_vote ? "Cancel Vote Up" : "Cancel Vote Down", vote_path(vote), method: :delete%>
+            <% elsif can?(:vote, review)%>
+                <%= form_with(url: review_votes_path(review)) do |f| %>
+                <input type="hidden" name="is_vote" value="true">
+                <%= f.submit "Vote Up" %>
+                <% end %>
+                <%= form_with(url: review_votes_path(review)) do |f| %>
+                <input type="hidden" name="is_vote" value="false">
+                <%= f.submit "Vote Down" %>
+                <% end %>
+            <% end %>
+            |      
+            <small>
+                (<%= pluralize(review.votes.where(is_vote: true).count, "vote up") %>)
+            </small>
+            |      
+            <small>
+                (<%= pluralize(review.votes.where(is_vote: false).count, "vote down") %>)
+            </small>
         </li>
     <% end %>
 </ul>
