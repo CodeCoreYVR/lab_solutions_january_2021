@@ -3,7 +3,12 @@ class ProductsController < ApplicationController
     before_action :find_product, only: [:edit, :update, :show, :destroy]
     before_action :authorize_user!, only: [:update,:destroy]
     def index
-        @products = Product.all
+        if params[:tag]
+            @tag = Tag.find params[:tag]
+            @products = @tag.products
+        else
+            @products = Product.all 
+        end
     end
 
     def new
@@ -49,7 +54,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:title,:description,:price)
+        params.require(:product).permit(:title,:description,:price, {tag_ids: []})
     end
 
     def authorize_user!

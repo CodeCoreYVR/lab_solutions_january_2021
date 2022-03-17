@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
     resources :favourites, shallow: true, only: [:create, :destroy]
   end
+  resources :tags, only:[:index]
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   resources :news_articles

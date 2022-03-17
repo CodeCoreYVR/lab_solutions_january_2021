@@ -11,6 +11,10 @@
 </small>
 <small> Created by <%= @product.user.full_name%>
 </small>
+<br />
+<% @product.tags.each do |tag|%>
+    <%= link_to tag.name, products_path(tag: tag.id)%>
+<% end %>
 <% if @favourite.present? %>
     <%= button_to "Unfavourite", favourite_path(@favourite), method: :delete %>
 <% else %>

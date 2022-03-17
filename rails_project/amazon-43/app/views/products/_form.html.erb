@@ -19,6 +19,14 @@
     <%= form.text_field :price%>
 </div>
 <div>
+    <%= form.collection_check_boxes :tag_ids, Tag.order(name: :asc), :id, :name do |b| %>
+        <div>
+        <%= b.check_box %>
+        <%= b.text.humanize %>
+        </div>
+    <% end %>
+</div>
+<div>
     <%= form.submit%>
 </div>
 
