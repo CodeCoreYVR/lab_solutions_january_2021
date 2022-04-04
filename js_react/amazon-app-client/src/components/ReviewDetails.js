@@ -1,3 +1,5 @@
+import StarRating from './StarRating';
+
 export default function ReviewDetails(props) {
     return (
         <p>
@@ -8,6 +10,7 @@ export default function ReviewDetails(props) {
             Created at: {props.created_at.toString()}
             <br />
             Created by: {props.full_name}
+            <StarRating max={5} current={props.rating} />
         </p>
     )
 }
