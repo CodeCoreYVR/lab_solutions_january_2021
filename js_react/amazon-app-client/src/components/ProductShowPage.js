@@ -1,4 +1,5 @@
 import ProductDetails from './ProductDetails';
+import ReviewList from './ReviewList';
 
 export default function ProductShowPage() {
     const product = {
@@ -47,6 +48,7 @@ export default function ProductShowPage() {
                 seller={product.seller}
                 price={product.price}
             />
+            <ReviewList reviewList={product.reviews} />
         </div>
     )
 }
