@@ -1,11 +1,12 @@
 import './App.css';
-import ProductDetails from './components/ProductDetails';
-import ReviewDetails from './components/ReviewDetails'
+// import ProductDetails from './components/ProductDetails';
+// import ReviewDetails from './components/ReviewDetails'
+import ProductShowPage from './components/ProductShowPage'
 
 function App() {
   return (
     <div className="App">
-      <ProductDetails
+      {/* <ProductDetails
         title="Phone"
         description="This is a phone"
         price={200}
@@ -17,7 +18,8 @@ function App() {
         body="good good"
         created_at={new Date()}
         full_name="Test User"
-      />
+      /> */}
+      <ProductShowPage />
     </div>
   );
 }
