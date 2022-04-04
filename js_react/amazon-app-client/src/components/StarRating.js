@@ -1,12 +1,10 @@
 export default function StarRating({ max, current }) {
     const listStars = () => {
         const result = [];
-        // max = 5, current = 2
         for (let i = 1; i <= max; i++) {
             const color = i > current ? "black" : "yellow";
             result.push(<Star key={i} style={{ color: color, width: "20px" }} />)
         }
-        // [<a>yellow</a>, <a>yellow</a>, <a>black</a>, <a>black</a>, <a>black</a>]
         return result;
     }
 
