@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import productsData from '../productIndexData'
-
+import NewProductForm from './NewProductForm';
 
 class ProductIndexPage extends Component {
     constructor(props) {
@@ -51,6 +51,7 @@ class ProductIndexPage extends Component {
                         </li>
                     ))}
                 </ul>
+                <NewProductForm onCreateProduct={this.createProduct} />
             </main>
         );
     }
