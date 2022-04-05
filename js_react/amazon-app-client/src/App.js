@@ -2,6 +2,7 @@ import './App.css';
 // import ProductDetails from './components/ProductDetails';
 // import ReviewDetails from './components/ReviewDetails'
 import ProductShowPage from './components/ProductShowPage'
+import ProductIndexPage from './components/ProductIndexPage'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         created_at={new Date()}
         full_name="Test User"
       /> */}
+      <ProductIndexPage />
       <ProductShowPage />
     </div>
   );

@@ -7,7 +7,7 @@ export default function ReviewDetails(props) {
             <br />
             {props.body}
             <br />
-            Created at: {props.created_at.toString()}
+            {/* Created at: {props.created_at.toString()} */}
             <br />
             Created by: {props.full_name}
             <StarRating max={5} current={props.rating} />
