@@ -11,6 +11,11 @@ export default function ReviewDetails(props) {
             <br />
             Created by: {props.full_name}
             <StarRating max={5} current={props.rating} />
+            <button className="ui right floated red button" onClick={() => {
+                props.onDeleteClick(props.id)
+            }}>
+                Delete
+            </button>
         </p>
     )
 }

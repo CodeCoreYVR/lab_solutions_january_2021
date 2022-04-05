@@ -13,6 +13,7 @@ export default function ReviewList(props) {
                             // created_at={e.created_at}
                             // full_name={e.full_name}
                             {...review}
+                            onDeleteClick={props.onReviewDelete}
                         />
                     </li>
                 })}
