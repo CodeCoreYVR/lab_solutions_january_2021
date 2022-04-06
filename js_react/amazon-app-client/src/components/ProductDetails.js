@@ -7,8 +7,8 @@ export default function ProductDetails(props) {
                 {description}
             </p>
             <span>${price}</span>
-            <span><strong>Created: {created_at.toLocaleString()}</strong></span>
-            <strong>Seller: {seller.full_name}</strong>
+            <span><strong>Created: {created_at ? created_at.toLocaleString() : ""}</strong></span>
+            <strong>Seller: {seller ? seller.full_name : ""}</strong>
         </div>
     )
 }

@@ -5,7 +5,7 @@ export default function ReviewList(props) {
         <>
             <h4>Review List:</h4>
             <ul>
-                {props.reviewList.map((review, i) => {
+                {props.reviewList ? props.reviewList.map((review, i) => {
                     return <li key={review.id}>
                         <ReviewDetails
                             // rating={e.rating}
@@ -16,7 +16,7 @@ export default function ReviewList(props) {
                             onDeleteClick={props.onReviewDelete}
                         />
                     </li>
-                })}
+                }) : null}
             </ul>
         </>
     )

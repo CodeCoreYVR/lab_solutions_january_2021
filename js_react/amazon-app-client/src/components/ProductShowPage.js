@@ -1,11 +1,18 @@
 import { Component } from 'react'
 import ProductDetails from './ProductDetails';
 import ReviewList from './ReviewList';
-import productData from '../productData';
+import { Product } from '../request'
 
 class ProductShowPage extends Component {
     state = {
-        product: productData
+        product: {}
+    }
+    componentDidMount() {
+        const pid = this.props.match.params.id;
+        Product.one(pid).then(data => {
+            console.log(data)
+            this.setState({ product: data })
+        })
     }
     deleteReview(reviewId) {
         this.setState(
