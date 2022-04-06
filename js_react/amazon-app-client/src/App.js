@@ -6,36 +6,34 @@ import ProductIndexPage from './components/ProductIndexPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/Home';
 import NavBar from './components/NavBar'
+import ProductNewPage from './components/ProductNewPage';
+import React, { Component } from 'react';
+import { Session } from './request'
 
-function App() {
-  return (
-    <div className="App">
-      {/* <ProductDetails
-        title="Phone"
-        description="This is a phone"
-        price={200}
-        created_at={new Date()}
-        seller={{ full_name: "Admin" }}
-      />
-      <ReviewDetails
-        rating={4}
-        body="good good"
-        created_at={new Date()}
-        full_name="Test User"
-      /> */}
-      {/* <ProductIndexPage />
-      <ProductShowPage /> */}
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { user: {} }
+  }
+  componentDidMount() {
+    Session.create({ email: "admin@user.com", password: "123" }).then(data => {
+      this.setState({
+        user: data
+      })
+    })
+  }
+  render() {
+    return (
       <BrowserRouter>
         <NavBar />
         <Switch>
           {/* /products/12 */}
           <Route path='/' exact component={Home} />
           <Route path='/products' exact component={ProductIndexPage} />
+          <Route path='/products/new' component={ProductNewPage} />
           <Route path='/products/:id' component={ProductShowPage} />
         </Switch>
       </BrowserRouter>
-    </div>
-  );
+    )
+  }
 }
-
-export default App;

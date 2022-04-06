@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { Product } from '../request'
-import NewProductForm from './NewProductForm';
 import { NavLink } from 'react-router-dom'
 
 class ProductIndexPage extends Component {
@@ -9,7 +8,6 @@ class ProductIndexPage extends Component {
         this.state = {
             products: []
         };
-        this.createProduct = this.createProduct.bind(this);
     }
     componentDidMount() {
         Product.all().then(data => {
@@ -19,21 +17,6 @@ class ProductIndexPage extends Component {
                 }
             )
         })
-    }
-    createProduct(params) {
-        this.setState((state) => {
-            return {
-                products: [
-                    {
-                        ...params,
-                        created_at: new Date(),
-                        id: Math.max(...state.products.map((product) => product.id)) + 1,
-                        seller: { full_name: "Admin User" }
-                    },
-                    ...state.products
-                ]
-            };
-        });
     }
     deleteProduct(id) {
         this.setState({ products: this.state.products.filter((element) => element.id !== id) });
@@ -61,7 +44,6 @@ class ProductIndexPage extends Component {
                         </li>
                     ))}
                 </ul>
-                <NewProductForm onCreateProduct={this.createProduct} />
             </main>
         );
     }
