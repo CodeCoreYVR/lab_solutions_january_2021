@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import productsData from '../productIndexData'
+import { Product } from '../request'
 import NewProductForm from './NewProductForm';
 import { NavLink } from 'react-router-dom'
 
@@ -7,9 +7,18 @@ class ProductIndexPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: productsData
+            products: []
         };
         this.createProduct = this.createProduct.bind(this);
+    }
+    componentDidMount() {
+        Product.all().then(data => {
+            this.setState(
+                {
+                    products: data
+                }
+            )
+        })
     }
     createProduct(params) {
         this.setState((state) => {
