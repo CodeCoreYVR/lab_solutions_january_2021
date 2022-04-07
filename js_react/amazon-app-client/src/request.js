@@ -9,6 +9,10 @@ export const Session = {
             },
             body: JSON.stringify(params)
         }).then(res => res.json());
+    },
+    current() {
+        return fetch(`${BASE_URL}/users/current`, { credentials: "include" })
+            .then(res => res.json())
     }
 };
 export const Product = {
