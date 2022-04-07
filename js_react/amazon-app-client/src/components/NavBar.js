@@ -8,6 +8,8 @@ export default function Navbar() {
             <NavLink to="/products">Products</NavLink>
             |
             <NavLink to="/products/new">New Product</NavLink>
+            |
+            <NavLink to="/sign_in">Sign In</NavLink>
         </nav>
     )
 }

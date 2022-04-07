@@ -40,6 +40,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :products
       resource :session, only: [:create, :destroy]
+      resources :users do
+        get :current, on: :collection
+      end
     end
   end
 end
