@@ -30,10 +30,17 @@ export default class App extends Component {
       this.setState({ user: data.user })
     })
   }
+  signOut = () => {
+    Session.destroy().then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  }
   render() {
     return (
       <BrowserRouter>
-        <NavBar current_user={this.state.user} />
+        <NavBar current_user={this.state.user} onSignOut={this.signOut} />
         <Switch>
           {/* /products/12 */}
           <Route path='/' exact component={Home} />
