@@ -2,10 +2,19 @@ import { Component } from 'react'
 import ProductDetails from './ProductDetails';
 import ReviewList from './ReviewList';
 import { Product } from '../request'
+import NewReviewForm from './NewReviewForm'
 
 class ProductShowPage extends Component {
-    state = {
-        product: {}
+    constructor(props) {
+        super(props);
+        this.state = {
+            review: {
+                body: '',
+                rating: 1
+            }
+        };
+        this.handleReviewForm = this.handleReviewForm.bind(this);
+        this.handleAddNewReview = this.handleAddNewReview.bind(this);
     }
     componentDidMount() {
         const pid = this.props.match.params.id;
@@ -13,6 +22,8 @@ class ProductShowPage extends Component {
             console.log(data)
             this.setState({ product: data })
         })
+        this.handleReviewForm = this.handleReviewForm.bind(this);
+        this.handleAddNewReview = this.handleAddNewReview.bind(this);
     }
     deleteReview(reviewId) {
         this.setState(
@@ -23,6 +34,39 @@ class ProductShowPage extends Component {
                 }
             }
         );
+    }
+    handleReviewForm(type, val) {
+        if (type === "CHANGE_BODY") {
+            const { body, ...rest } = this.state.review;
+            this.setState({
+                review: {
+                    body: val,
+                    ...rest
+                }
+            })
+        } else {
+            const { rating, ...rest } = this.state.review;
+            this.setState({
+                review: {
+                    rating: val,
+                    ...rest
+                }
+            })
+        }
+    }
+
+    handleAddNewReview(params) {
+        this.setState(
+            {
+                reviews: [
+                    ...this.state.reviews,
+                    {
+                        id: 123,
+                        ...params
+                    }
+                ]
+            }
+        )
     }
     render() {
         return (
@@ -35,6 +79,7 @@ class ProductShowPage extends Component {
                     price={this.state.product.price}
                 />
                 <ReviewList onReviewDelete={(id) => this.deleteReview(id)} reviewList={this.state.product.reviews} />
+                <NewReviewForm onChange={this.handleReviewForm} review={this.state.review} handleAddNewReview={this.handleAddNewReview} />
             </div>
         )
     }
